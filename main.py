@@ -27,7 +27,7 @@ import getpass
 #     st.warning("OpenAI API key not found. Please provide to continue.")
 #     st.stop()
 
-open_ai_key = st.secrets["open_ai_key"]["key"]
+open_ai_key = st.secrets["OPENAI_API_KEY"]["key"]
 client = OpenAI(api_key=open_ai_key)
 
 # ------------------ Natural Sentence Generators ------------------
