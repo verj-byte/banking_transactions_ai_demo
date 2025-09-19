@@ -13,21 +13,22 @@ import getpass
 # client = OpenAI()
 
 # ----------------- API Key Handling -----------------
-if "openai_api_key" not in st.session_state:
-    os.environ["OPENAI_API_KEY"] = getpass.getpass("OpenAI API Key:")
-    st.session_state.openai_api_key = os.getenv("OPENAI_API_KEY")
+# if "openai_api_key" not in st.session_state:
+#     os.environ["OPENAI_API_KEY"] = getpass.getpass("OpenAI API Key:")
+#     st.session_state.openai_api_key = os.getenv("OPENAI_API_KEY")
 
-if not st.session_state.openai_api_key:
-    st.session_state.openai_api_key = st.text_input(
-        "Enter your OpenAI API key:", 
-        type="password"
-    )
+# if not st.session_state.openai_api_key:
+#     st.session_state.openai_api_key = st.text_input(
+#         "Enter your OpenAI API key:", 
+#         type="password"
+#     )
 
-if not st.session_state.openai_api_key:
-    st.warning("OpenAI API key not found. Please provide to continue.")
-    st.stop()
+# if not st.session_state.openai_api_key:
+#     st.warning("OpenAI API key not found. Please provide to continue.")
+#     st.stop()
 
-client = OpenAI(api_key=st.session_state.openai_api_key)
+open_ai_key = st.secrets["open_ai_key"]["key"]
+client = OpenAI(api_key=open_ai_key)
 
 # ------------------ Natural Sentence Generators ------------------
 def make_sentence_template(row):
